@@ -1,0 +1,7 @@
+{
+  "name": "MySmartNote",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}

@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Texte reconnu</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Résultat OCR</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <pre>{{ scannedText }}</pre>
+      <ion-button expand="full" (click)="generateSummary()">Générer un résumé</ion-button>
+      <ion-spinner *ngIf="loading"></ion-spinner>
+
+      <ion-card *ngIf="summary">
+        <ion-card-header>
+          <ion-card-title>Résumé</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <p>{{ summary }}</p>
+        </ion-card-content>
+      </ion-card>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
