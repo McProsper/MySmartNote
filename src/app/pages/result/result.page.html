@@ -22,6 +22,9 @@
           {{ summary }}
         </ion-card-content>
       </ion-card>
+      <ion-chip *ngFor="let tag of tags" class="tag-chip">
+        {{ tag }}
+      </ion-chip>
     </ion-card-content>
   </ion-card>
 </ion-content>
