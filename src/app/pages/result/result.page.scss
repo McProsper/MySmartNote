@@ -18,7 +18,7 @@ ion-header {
   ion-toolbar {
     --background: transparent;
     --color: white;
-    
+
     ion-title {
       color: white;
     }
@@ -32,13 +32,13 @@ ion-content {
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(5px);
     border-radius: 10px;
-    
+
     ion-card-header {
       ion-card-title {
         color: white;
       }
     }
-    
+
     ion-card-content {
       color: white;
 
@@ -63,5 +63,17 @@ ion-content {
         color: rgb(192, 155, 81);
       }
     }
+  }
+}
+
+.tag-chip {
+  --background: rgba(192, 155, 81, 0.2);
+  --color: rgb(209, 187, 142);
+  margin: 5px;
+  border: 1px dashed rgb(209, 187, 142);
+  backdrop-filter: blur(5px);
+
+  &:hover {
+    --background: rgba(192, 155, 81, 0.4);
   }
 }
