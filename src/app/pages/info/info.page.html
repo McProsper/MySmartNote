@@ -1,0 +1,50 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>A propos de l'application</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+
+  <div class="image">
+        <img src="assets/images/scan-logo-2.png" alt="Scanner illustration" />
+        <h2 class="ion-text-center">Bienvenue sur MySmartNotes</h2>
+  </div>
+  <p>
+    MySmartNotes a été développée pour vous offrir un espace de gestion documentaire performant et agréable à utiliser. Il a pour fonctionnalités principales:
+  </p>
+  <ion-list>
+    <ion-item lines="none">
+      <ion-icon slot="start" name="scan-circle-outline"></ion-icon>
+      <ion-label>Scanner des documents</ion-label>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-icon slot="start" name="document-text-outline"></ion-icon>
+      <ion-label>Reconnaissance de textes manuscrits</ion-label>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-icon slot="start" name="contract-outline"></ion-icon>
+      <ion-label>Résumé automatique de longs textes</ion-label>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-icon slot="start" name="search-circle-outline"></ion-icon>
+      <ion-label>Recherche intélligente</ion-label>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-icon slot="start" name="volume-high-outline"></ion-icon>
+      <ion-label>Dictée vocale</ion-label>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-icon slot="start" name="save-outline"></ion-icon>
+      <ion-label>Sauvegarde de notes scannées</ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

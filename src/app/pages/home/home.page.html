@@ -1,13 +1,149 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>home</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+
+    <ion-searchbar 
+    *ngIf="searchActive"
+      [(ngModel)]="searchTerm"
+      (ionInput)="filterUploadedDocuments()"
+      (ionCancel)="cancelSearch()"
+      showCancelButton="always"
+      placeholder="Rechercher un fichier..."
+      animated
+      debounce="300"
+      style="width: 100%; max-width: 300px;"></ion-searchbar>
+
+    <ion-buttons slot="end" *ngIf="!searchActive">
+      <ion-button (click)="toggleSearch()">
+        <ion-icon slot="icon-only" name="search-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
+
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">home</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <h2 class="ion-text-center">Bienvenue dans votre espace</h2>
+
+  <!-- Zone de tri -->
+  <ion-item lines="none" class="ion-align-items-center">
+    <ion-select aria-label="Tri" [(ngModel)]="selectedSort" (ionChange)="applySort()">
+      <ion-select-option value="dateDesc">Plus récent</ion-select-option>
+      <ion-select-option value="dateAsc">Plus ancien</ion-select-option>
+      <ion-select-option value="alphaAsc">Ordre alphabétique (A-Z)</ion-select-option>
+    </ion-select>
+
+    <!-- Icone d'upload -->
+    <ion-button fill="clear" slot="end" (click)="fileInput.click()" title="Charger un fichier">
+      <ion-icon slot="icon-only" name="cloud-upload-outline"></ion-icon>
+    </ion-button>
+
+    <input type="file" hidden #fileInput (change)="handleFileInput($event)">
+
+    <!-- Icone d'infos -->
+    <ion-button fill="clear" slot="end" (click)="goToInfoPage()" title="Voir les informations">
+      <ion-icon slot="icon-only" name="alert-circle-outline"></ion-icon>
+    </ion-button>
+  </ion-item>
+
+  <h6 class="ion-margin-start">Fichiers sauvegardés</h6>
+
+  <!-- Affichage des documents/pdf sauvegardés et uploadés-->
+  <ion-text *ngIf="filteredUploadedDocuments.length === 0" class="ion-margin-start">
+  Aucun résultat
+</ion-text>
+
+<ion-list *ngIf="filteredUploadedDocuments.length > 0">
+  <ion-item *ngFor="let doc of filteredUploadedDocuments">
+    <ion-icon slot="start" name="document-outline"></ion-icon>
+    <ion-label>
+      <h2>{{ doc.name }}</h2>
+      <p>{{ doc.date }} - {{ doc.size }}</p>
+    </ion-label>
+  </ion-item>
+</ion-list>
+
+<ion-text *ngIf="filteredUploadedDocuments.length === 0" class="ion-margin-start">
+  Aucun résultat
+</ion-text>
+
+  <!-- <ion-grid [fixed]="true" *ngIf="filteredUploadedDocuments.length > 0">
+  <ion-row *ngFor="let row of getRows(filteredUploadedDocuments)">
+    <ion-col *ngFor="let doc of row">
+      <ion-card >
+  <ion-card-header>
+    <ion-card-title>{{ doc.name }}</ion-card-title>
+    <ion-card-subtitle>{{ doc.date }} - {{ doc.size }}</ion-card-subtitle>
+  </ion-card-header>
+
+  <ion-card-content> Bref..... </ion-card-content>
+</ion-card>
+    </ion-col>
+
+    <ion-col>
+      <ion-card color="secondary">
+  <ion-card-header>
+    <ion-card-title>Lina</ion-card-title>
+    <ion-card-subtitle>Messia</ion-card-subtitle>
+  </ion-card-header>
+
+  <ion-card-content> Bref...... </ion-card-content>
+</ion-card>
+    </ion-col>
+  </ion-row> -->
+
+  <!-- <ion-row>
+    <ion-col>
+      <ion-card color="tertiary">
+  <ion-card-header>
+    <ion-card-title>Makamae</ion-card-title>
+    <ion-card-subtitle>Yv</ion-card-subtitle>
+  </ion-card-header>
+
+  <ion-card-content> Bref...... </ion-card-content>
+</ion-card>
+    </ion-col>
+
+    <ion-col>
+      <ion-card color="success">
+  <ion-card-header>
+    <ion-card-title>Grace</ion-card-title>
+    <ion-card-subtitle>Ntitambert</ion-card-subtitle>
+  </ion-card-header>
+
+  <ion-card-content> Bref... </ion-card-content>
+</ion-card>
+    </ion-col>
+  </ion-row> -->
+
+  <!-- <ion-row>
+    <ion-col>
+      <ion-card color="warning">
+  <ion-card-header>
+    <ion-card-title>Messia</ion-card-title>
+    <ion-card-subtitle>Jephtée</ion-card-subtitle>
+  </ion-card-header>
+
+  <ion-card-content> Bref... </ion-card-content>
+</ion-card>
+    </ion-col>
+
+    <ion-col>
+      <ion-card color="danger">
+  <ion-card-header>
+    <ion-card-title>Paris</ion-card-title>
+    <ion-card-subtitle>Idf</ion-card-subtitle>
+  </ion-card-header>
+
+  <ion-card-content> Bref..... </ion-card-content>
+</ion-card>
+    </ion-col>
+  </ion-row> -->
+
+<!-- </ion-grid> -->
+
+
+
 </ion-content>
