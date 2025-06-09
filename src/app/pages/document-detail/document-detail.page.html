@@ -1,0 +1,23 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Détail du document</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  
+  <ion-content class="ion-padding">
+  <h2>{{ documentName }}</h2>
+
+  <!-- Si c'est une image -->
+  <img *ngIf="imageDataUrl" [src]="imageDataUrl" style="max-width: 100%; height: auto;" />
+
+  <!-- Si c'est du texte -->
+  <pre *ngIf="!imageDataUrl">{{ documentContent }}</pre>
+</ion-content>
+
+
+</ion-content>
