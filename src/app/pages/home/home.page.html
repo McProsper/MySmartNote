@@ -56,7 +56,7 @@
 </ion-text>
 
 <ion-list *ngIf="filteredUploadedDocuments.length > 0">
-  <ion-item *ngFor="let doc of filteredUploadedDocuments">
+  <ion-item *ngFor="let doc of filteredUploadedDocuments" (click)="openDocument(doc)">
     <ion-icon slot="start" name="document-outline"></ion-icon>
     <ion-label>
       <h2>{{ doc.name }}</h2>
